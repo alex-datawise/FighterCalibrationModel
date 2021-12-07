@@ -38,7 +38,7 @@ class Fighter:
 
     def __str__(self):
         return "Fighter('%s', attack(%i-%i), defense(%i-%i), " \
-               "stamina(%i-%i), speed(%i-%i)), initial_health(%i)" % (self.name,
+               "stamina(%i-%i), speed(%i-%i), initial_health(%i))" % (self.name,
                                                   self.attack.min, self.attack.max,
                                                   self.defense.min, self.defense.max,
                                                   self.stamina.min, self.stamina.max,
