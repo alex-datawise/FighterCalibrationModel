@@ -8,15 +8,15 @@ class Fighter:
     _defense_range = range(1, 101)
     _stamina_range = range(1, 51)
     _speed_range = range(1, 51)
-    _health_default = 150
 
-    def __init__(self, name, attack, defense, stamina, speed):
+    def __init__(self, name, attack, defense, stamina, speed, initial_health):
         self.name = name
         self.attack = attack
         self.defense = defense
         self.stamina = stamina
         self.speed = speed
-        self.health = self._health_default
+        self.health = initial_health
+        self.initial_health = initial_health
         self.scores = {}
 
     # region Representation
@@ -30,18 +30,20 @@ class Fighter:
                            "stamina": {"min": self.stamina.min,
                                        "max": self.stamina.max},
                            "speed": {"min": self.speed.min,
-                                     "max": self.speed.max}
+                                     "max": self.speed.max},
+                           "initial_health": self.initial_health
                            }
                }
         return json.dumps(obj)
 
     def __str__(self):
         return "Fighter('%s', attack(%i-%i), defense(%i-%i), " \
-               "stamina(%i-%i), speed(%i-%i))" % (self.name,
+               "stamina(%i-%i), speed(%i-%i)), initial_health(%i)" % (self.name,
                                                   self.attack.min, self.attack.max,
                                                   self.defense.min, self.defense.max,
                                                   self.stamina.min, self.stamina.max,
-                                                  self.speed.min, self.speed.max)
+                                                  self.speed.min, self.speed.max,
+                                                  self.initial_health)
 
     # endregion
 
