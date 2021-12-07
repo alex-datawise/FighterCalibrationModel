@@ -8,7 +8,7 @@ class Fighter:
     _defense_range = range(1, 101)
     _stamina_range = range(1, 51)
     _speed_range = range(1, 51)
-    _health_default = 50
+    _health_default = 150
 
     def __init__(self, name, attack, defense, stamina, speed):
         self.name = name
