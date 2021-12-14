@@ -44,20 +44,20 @@ class Round:
 
         if self._fighter1_strategy == "attack":
             if self._fighter1_strategy_level == self.fighter1.attack.max:
-                self.fighter2.health <= 0
+                self.fighter2.health = 0
                 _knockout = True
         else:
             if self._fighter1_strategy_level == self.fighter1.defense.max:
-                self.fighter2.health <= 0
+                self.fighter2.health = 0
                 _knockout = True
 
         if self._fighter2_strategy == "attack":
             if self._fighter2_strategy_level == self.fighter2.attack.max:
-                self.fighter1.health <= 0
+                self.fighter1.health = 0
                 _knockout = True
         else:
             if self._fighter2_strategy_level == self.fighter2.defense.max:
-                self.fighter1.health <= 0
+                self.fighter1.health = 0
                 _knockout = True
 
         # only continue with the round if there is no knockout
