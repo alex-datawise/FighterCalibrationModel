@@ -23,7 +23,7 @@ class Fight:
 
             # result of the round is captured in Fighters' scores
 
-            if _current_round > self._rounds_per_fight:
+            if _current_round >= self._rounds_per_fight:
                 # last Round reached
                 break
             elif self.fighter1.health <= 0:
@@ -33,25 +33,13 @@ class Fight:
                 # Fighter 2 K.O.
                 break
 
-        # determine winner by consulting scores
-        self._wins1 = 0
-        self._wins2 = 0
-
-        for v in self.fighter1.scores.values():
-            if True in v:
-                self._wins1 += 1
-
-        for v in self.fighter2.scores.values():
-            if True in v:
-                self._wins2 += 1
-
         # dump scores to statistics file
         self.write_to_log("statistics.csv")
 
-        # populate the number of achieved rounds from one of the Fighters' score card before clearing it
+        # populate the number of achieved rounds from one of the Fighters' scorecard before clearing it
         self.number_of_rounds = len(self.fighter1.scores)
 
-        # clear score card for fighters
+        # clear scorecard for fighters
         self.fighter1.scores.clear()
         self.fighter2.scores.clear()
 
@@ -59,21 +47,21 @@ class Fight:
 
     @property
     def winner(self):
-        if self._wins1 > self._wins2:
+        if self.fighter1.health > self.fighter2.health:
             return self.fighter1
         else:
             return self.fighter2
 
     @property
     def loser(self):
-        if self._wins1 > self._wins2:
-            return self.fighter2
-        else:
+        if self.fighter1.health < self.fighter2.health:
             return self.fighter1
+        else:
+            return self.fighter2
 
     @property
     def tie(self):
-        if self._wins1 == self._wins2:
+        if self.fighter1.health == self.fighter2.health:
             return True
         else:
             return False
@@ -102,7 +90,7 @@ class Fight:
             file_handle.write("fight_number,fight_round,fighter1_name,fighter1_strategy,fighter1_strategy_level,fighter1_characteristic_level,fighter1_health_in,fighter1_health_out,fighter1_score,fighter1_win,fighter2_name,fighter2_strategy,fighter2_strategy_level,fighter2_characteristic_level,fighter2_health_in,fighter2_health_out,fighter2_score,fighter2_win\n")
 
         # write data
-        for number in range(len(self.fighter1.scores)-1):
+        for number in range(len(self.fighter1.scores)):
             file_handle.write(str(self.fight_number)
                               + "," + str(number+1)
                               + "," + self.fighter1.name + ","

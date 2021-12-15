@@ -39,6 +39,7 @@ class Round:
         # Knockout rule:
         # If any of the fighter hit the maximum of their strategy range, they completely deplete the health of
         # their opponent. The remaining calculations are superfluous.
+        # TBD: if both happen to reach the max value, how is that handled?
 
         _knockout = False
 
