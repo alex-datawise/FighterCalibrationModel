@@ -5,21 +5,20 @@ if __name__ == '__main__':
 
     # Fight Simulation
     number_of_fights = 10
+    initial_health = 100
 
     for i in range(number_of_fights):
 
-        # First Fighter
-        f1 = Fighter('Fighter #1', [1, 55], [1, 36], [1, 44], [1, 26])
+        # First Fighter (name, attack, defense, stamina, speed, initial_health)
+        f1 = Fighter('Fighter #1', [1, 100], [1, 100], [1, 50], [1, 50], initial_health)
 
         # Second Fighter
-        f2 = Fighter('Fighter #2', [1, 55], [1, 36], [1, 44], [1, 26])
+        f2 = Fighter('Fighter #2', [1, 100], [1, 100], [1, 50], [1, 50], initial_health)
 
         # Create Fight
         f = Fight(i+1, f1, f2)
 
         # Publish Results
-        print(f1.name, f1.scores)
-        print(f2.name, f2.scores)
         print("Fight #%i (%i rounds)" % (i+1, f.number_of_rounds))
         if f.tie:
             print("The fight ended in a tie.")
